@@ -8,14 +8,13 @@ import org.revo.Domain.Size;
 import org.revo.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.HashSet;
 import java.util.List;
 
+import static org.springframework.data.domain.Sort.Direction.DESC;
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 
@@ -50,7 +49,7 @@ public class IssueApplicationTests {
 
     @Test
     public void retrieveOrderByAmount() {
-        List<Product> mappedResults = mongoOperations.aggregate(Aggregation.newAggregation(Product.class, match(where("amount._class").is(FollowAmount.class.getName())), unwind("amount.amountData"), group("id").sum("amount.amountData.value").as("sum"), sort(Sort.Direction.DESC, "sum")), Product.class).getMappedResults();
+        List<Product> mappedResults = mongoOperations.aggregate(newAggregation(Product.class, match(where("amount._class").is(FollowAmount.class.getName())), unwind("amount.amountData"), group("id").sum("amount.amountData.value").as("sum"), sort(DESC, "sum")), Product.class).getMappedResults();
         mappedResults.forEach(product -> System.out.println(product.getId()));
 
 
