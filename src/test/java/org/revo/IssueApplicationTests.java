@@ -33,13 +33,13 @@ public class IssueApplicationTests {
         Product product1 = new Product();
         HashSet<FollowAmount.Entry<Size, Integer>> amount1 = new HashSet<>();
         amount1.add(new FollowAmount.Entry<>(Size.L, 5));
-        product1.setId("1").setAmount(new FollowAmount().setAmount(amount1));
+        product1.setId("1").setAmount(new FollowAmount().setAmountData(amount1));
 
 
         Product product2 = new Product();
         HashSet<FollowAmount.Entry<Size, Integer>> amount2 = new HashSet<>();
         amount2.add(new FollowAmount.Entry<>(Size.M, 10));
-        product2.setId("2").setAmount(new FollowAmount().setAmount(amount2));
+        product2.setId("2").setAmount(new FollowAmount().setAmountData(amount2));
 
 
         productRepository.save(product1);
@@ -50,7 +50,7 @@ public class IssueApplicationTests {
 
     @Test
     public void retrieveOrderByAmount() {
-        List<Product> mappedResults = mongoOperations.aggregate(Aggregation.newAggregation(Product.class, match(where("amount._class").is(FollowAmount.class.getName())), unwind("amount.amount"), group("id").sum("amount.amount.value").as("sum"), sort(Sort.Direction.DESC, "sum")), Product.class).getMappedResults();
+        List<Product> mappedResults = mongoOperations.aggregate(Aggregation.newAggregation(Product.class, match(where("amount._class").is(FollowAmount.class.getName())), unwind("amount.amountData"), group("id").sum("amount.amountData.value").as("sum"), sort(Sort.Direction.DESC, "sum")), Product.class).getMappedResults();
         mappedResults.forEach(product -> System.out.println(product.getId()));
 
 

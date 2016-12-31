@@ -7,14 +7,14 @@ import java.util.Set;
  * Created by ashraf on 26/12/16.
  */
 public class FollowAmount extends Amount {
-    private Set<Entry<Size, Integer>> amount = new HashSet<>();
+    private Set<Entry<Size, Integer>> amountData = new HashSet<>();
 
-    public Set<Entry<Size, Integer>> getAmount() {
-        return amount;
+    public Set<Entry<Size, Integer>> getAmountData() {
+        return amountData;
     }
 
-    public FollowAmount setAmount(Set<Entry<Size, Integer>> amount) {
-        this.amount = amount;
+    public FollowAmount setAmountData(Set<Entry<Size, Integer>> amountData) {
+        this.amountData = amountData;
         return this;
     }
 
