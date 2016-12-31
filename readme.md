@@ -11,4 +11,4 @@ when i make aggregation to ``match(where("amount._class").is(FollowAmount.class.
 i know amount d't have amount because it is abstract class by is saved FollowAmount in the database which extends amount and have amountData 
 
 
-[I'm a relative reference to a repository file](../src/main/java/org/revo/Domain/size.java)
+[I'm a relative reference to a repository file](../master/src/main/java/org/revo/Domain/size.java)
