@@ -1,4 +1,4 @@
-##exception when use spring data mongodb when ``Aggregation.unwind()`` to abstract class
+##Exception when use spring data mongodb when ``Aggregation.unwind()`` to abstract class
 org.springframework.data.mapping.PropertyReferenceException: No property amountData found for type Amount! Traversed path: Product.amount.
 
 
@@ -11,3 +11,4 @@ when i make aggregation to ``match(where("amount._class").is(FollowAmount.class.
 i know amount d't have amount because it is abstract class by is saved FollowAmount in the database which extends amount and have amountData 
 
 
+[I'm a relative reference to a repository file](../src/main/java/org/revo/Domain/size.java)
